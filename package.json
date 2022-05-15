@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Systems de Gestao Empresarial",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smartmanagerlda/sistemaGestaoEmpresarial.git"
+  },
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --win --x64 --publish never",
-    "deploy": "electron-builder --win --x64 --publish -p always"
+    "build": "electron-builder build --mac --win --publish never",
+    "deploy": "electron-builder build --mac --win --publish always"
   },
   "author": "Systems Manager",
   "license": "ISC",
@@ -19,10 +23,7 @@
     "electron": "^18.2.3",
     "electron-builder": "^23.0.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/smartmanagerlda/sistemaGestaoEmpresarial.git"
-  },
+  
   "release": "electron-builder",
   "build": {
     "appId": "com.smartmanager",
