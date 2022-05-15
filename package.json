@@ -11,15 +11,27 @@
   "author": "Systems Manager",
   "license": "ISC",
   "dependencies": {
-    "electron": "^9.1.0",
     "electron-pos-printer": "^1.2.4",
     "electron-updater": "^5.0.1"
   },
   "devDependencies": {
+    "electron": "^18.2.3",
     "electron-builder": "^23.0.3"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/smartmanagerlda/sistemaGestaoEmpresarial.git"
+    "type": "git",
+    "url": "https://github.com/smartmanagerlda/sistemaGestaoEmpresarial.git"
+  },
+  "build": {
+    "appId": "com.smartmanager",
+    "productName": "Systems Manager",
+    "target": "NSIS",
+    "directories": {
+      "output": "build"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    }
   }
 }
