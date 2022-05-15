@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder build --win --publish never",
-    "deploy": "electron-builder build --win --publish always"
+    "deploy": "GH_TOKEN=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 electron-builder build --win --publish always"
   },
   "author": "Systems Manager",
   "license": "ISC",
