@@ -1,6 +1,6 @@
 {
   "name": "systems-manager",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Systems de Gestao Empresarial",
   "main": "main.js",
   "scripts": {
