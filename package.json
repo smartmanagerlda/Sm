@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder build --win --publish never",
-    "deploy": "electron-builder build --win --publish -p always"
+    "build": "electron-builder --win --x64 --publish never",
+    "deploy": "electron-builder --win --x64 --publish -p always"
   },
   "author": "Systems Manager",
   "license": "ISC",
