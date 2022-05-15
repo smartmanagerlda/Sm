@@ -1,18 +1,19 @@
 {
   "name": "systems-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Systems de Gestao Empresarial",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder build --win --publish never",
-    "deploy": "GH_TOKEN=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 electron-builder build --win --publish always"
+    "deploy": "electron-builder build --win --publish always"
   },
   "author": "Systems Manager",
   "license": "ISC",
   "dependencies": {
     "electron-pos-printer": "^1.2.4",
-    "electron-updater": "^5.0.1"
+    "electron-updater": "^5.0.1",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "electron": "^18.2.3",
