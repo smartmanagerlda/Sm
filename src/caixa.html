@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Caixa</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="sugestao.css" rel="stylesheet">
+ 
+    <style>
+         .box-centerside{
+             float: left;
+             min-height: 100px;
+             width: 100%;
+         }
+    </style>
+</head>
+
+<body>
+
+    <div class="p-1 mb-2 bg-gradient-primary text-white">
+        <nav>
+            <h6 class='text-center'><strong id="nomeEpresa23"></strong> <strong id='status'></strong></h6>
+        </nav>
+    </div>
+
+    <div class="container-fluid text-black">
+        <div class="p-1 mb-2 bg-primary text-white">
+            <div class="container text-black">
+                <div class="row">
+                    <div class="col-md text-center">
+                        <Strong id="operador23"></Strong>
+                    </div>
+                    <div class="col-md text-center">
+                        <h6 id="hora"></h6>
+                    </div>
+                    <div class="col-md text-center">
+                        <h6 id="day"></h6>
+                    </div>
+                    <div class="col-md text-center">
+                        <h6 id="date"></h6>
+                    </div>
+                    <div class="col-md text-center">
+                        <h6 id="vendaDiaria"></h6>
+                    </div>
+                    <div class="col-md text-center">
+                        <a class="btn btn-primary" id="sairCaixa">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-black">
+        <div class="row">
+            <div class="col-sm">
+                <div class="p-1 mb-2 bg-gradient-primary text-white">
+                    <div class="container-fluid text-black">
+                        <div class="row">
+
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="servicoCotacao" disabled data-toggle="modal"
+                                    data-target="#exampleModalServicos/Cotacoes"><small>Serviços/Cotações</small></button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="maisProduto" disabled data-toggle="modal"
+                                    data-target="#exampleModalCenter"><small>Adicionar Produto</small></button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="confProduto" disabled>
+                                    <small>
+                                        Confirmar Produto
+                                    </small>
+                                    </button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="removProduto" data-toggle="modal"
+                                    data-target="#exampleModalCenter1" disabled><small>Remover Produto</small></button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="cansCompra" disabled>
+                                    <small>
+                                        Cancelar Compra
+                                    </small>
+                                    </button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="finalCompra" disabled><small>Finalizar
+                                    Compra</small></button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="finalCotacao" disabled><small>Finalizar
+                                    Cotações</small></button>
+                            </div>
+                            <div class="col-md">
+                                <button type="button" class="btn btn-primary" id="impressora"><small>Impressora</small></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-black">
+        <div class="p-1 mb-2 bg-primary text-white">
+            <div class="container text-black">
+                <div class="row">
+                    <div class="col-md text-center">
+                        <small>Quant</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>Cod</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>Desc</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>Desc%</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>IVA</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>Preço/Un</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>Preço Total</small>
+                    </div>
+                    <div class="col-md text-center">
+                        <small>Quant. Stock</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-black">
+        <div class="p-1 mb-2 bg-white text-white">
+            <div class="container text-black">
+                <div class="previw row">
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="quantStock">
+                    </div>
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="codStock">
+                    </div>
+                    <div class="col-md">
+                        <input type="text" class="form-control" id="discStock">
+                    </div>
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="discpStock">
+                    </div>
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="ivaStock">
+                    </div>
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="precounStock">
+                    </div>
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="precotStock">
+                    </div>
+                    <div class="col-md text-center">
+                        <input type="text" class="form-control" id="stockTotal11">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container-fluid" role="main">
+        <div class="row">
+            <div class="col">
+                <div id="alertaSucesso">
+
+                </div>
+                <div class="text-center">
+                    <h6>Histórico de Vendas</h6>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="p-1 mb-2 mt-2 bg-gradient-primary text-white">
+                            <div class="container-fluid text-black">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h6>Cod</h6>
+                                    </div>
+                                    <div class="col-md">
+                                        <h6>Produto</h6>
+                                    </div>
+                                    <div class="col-md">
+                                        <h6>Qant</h6>
+                                    </div>
+                                    <div class="col-md">
+                                        <h6>Desc</h6>
+                                    </div>
+                                    <div class="col-md">
+                                        <h6>Preço/Un</h6>
+                                    </div>
+                                    <div class="col-md">
+                                        <h6>Stock Total</h6>
+                                    </div>
+                                    <div class="col-md">
+                                        <h6>Total(IVA)</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lista subcoll box-centerside">
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <figure class="figure center-block">
+                                <!-- <figcaption class="figure-caption">A caption for the above image.</figcaption> -->
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container-fluid text-black">
+                        <div class="p-1 mb-2 mt-2 bg-gradient-primary text-white text-center">
+                            <h4>Recibo</h4>
+                            <h6><Strong id="nomeEpresa233"></Strong></h6>
+                            <h6>Avenida: <Strong id="avenidaLocalizacao23"></Strong></h6>
+                            <h6>Banco NIB: <Strong id="bancoNIB23"></Strong></h6>
+                            <h6>NUIT: <Strong id="empresaNUIT23"></Strong></h6>
+                            <div class="container-fluid text-black">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <small>Produto</small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small>Qant</small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small>Preço/Un</small>
+                                    </div>
+                                    <!-- <div class="col-md">
+                                        <h6 id="stockTotal"></h6>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="recibo">
+                                <div class="container-fluid text-black">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <h6 id="Produto"></h6>
+                                        </div>
+                                        <div class="col-md">
+                                            <h6 id="Qant"></h6>
+                                        </div>
+                                        <div class="col-md">
+                                            <h6 id="Preço/Un"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md text-right">
+                                <p><Strong>Total(IVA): </Strong><Strong id="total"></Strong></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalServicosCotacoes" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Novo Serviço/Cotação</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-4" id="nomeClienteCaixa" placeholder="Nome do Cliente"
+                        required autofocus autocomplete="on">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="maisProdutoCaixa">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalServicosCotacoes2" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-4" id="nomeClienteCotacao11a"
+                        placeholder="Nome do Cliente" required autofocus autocomplete="on">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="nomeClienteCotacao">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalVendaProdutos" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-4" id="nomeClienteProdutosValue"
+                        placeholder="Nome do Cliente" required autofocus autocomplete="on">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="nomeClienteProdutos">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Novo Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="search-input form-control mb-4" id="codigo" placeholder="Nome" required
+                        autofocus autocomplete="off">
+                    <div class="suggestions">
+                    </div>
+                    <br>
+                    <input type="number" class="form-control" id="quantidade" placeholder="Quantidade" required>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="addProduto">Tributavel</button>
+                    <button type="button" class="btn btn-primary" id="addProduto1">Não Tributavel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Remover Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-4" id="rrNome" placeholder="Nome" required autofocus
+                        autocomplete="on">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="rrProduto">Remover</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Novo Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>O código do produto ou nome em falta...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Remover Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Nome do produto nao encontrado na lista de vendas actual!!!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenterProcessandoImpressao" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Imprimindo...</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Processado a impressão do documento, por favor aguarde!!!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleImpressora" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Definições da Impressora e Contacto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-4" id="contactoEmpresa" placeholder="Contacto da Empresa" required autofocus
+                        autocomplete="on">
+                </div>
+                <div class="modal-body">
+                    <p>Impressoras Disponiveis:</p>  
+                    <div id='list_printers'>
+                    </div>
+                    <br>  
+                    <p>Dimensões</p>
+                    <input type="radio" id="w1" name="width" value="140px">
+                    <label for="w1">140px</label><br>
+                    
+                    <input type="radio" id="w2" name="width" value="170px">
+                    <label for="w2">170px</label><br>
+                    
+                    <input type="radio" id="w3" name="width" value="200px">
+                    <label for="w3">200px</label><br>
+                    
+                    <input type="radio" id="w4" name="width" value="250px">
+                    <label for="w4">250px</label><br>
+                    
+                    <input type="radio" id="w5" name="width" value="300px">
+                    <label for="w5">300px</label><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="confirmarImpressora" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Model -->
+    <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Recibo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="recibo23 modal-body">
+                    <div class="p-2 mb-2 mt-2 bg-white text-black">
+                        <div class="text-center">
+                            <h3><Strong id="nomeEpresa243"></Strong></h3>
+                        </div>
+                        <div class="text-center">
+                            <h6>Avenida: <Strong id="avenidaLocalizacao243"></Strong></h6>
+                        </div>
+                        <div class="text-center">
+                            <h6>Banco NIB: <Strong id="bancoNIB243"></Strong></h6>
+                        </div>
+                        <div class="text-center">
+                            <h6>NUIT: <Strong id="empresaNUIT243"></Strong></h6>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-left">
+                                <Strong>Dia: </Strong><Strong id="data23"></Strong>
+                            </div>
+                            <div class="text-left">
+                                <Strong>Hora: </Strong><Strong id="horaRecibo"></Strong>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-left">
+                                <Strong>Operador: </Strong><Strong id="operador23e"></Strong>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-left">
+                                <Strong>Cliente: </Strong><Strong id="cliente23e"></Strong>
+                            </div>
+                        </div>
+                        <div class="container-fluid text-black">
+                            <hr style="border-top: dotted 2px;" />
+                            <div class="row">
+                                <div class="col-md">
+                                    <Strong><small>Cod</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                   <Strong><small>Prod</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Qant</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Preço</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Unid</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Desc%</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Total</small></Strong>
+                                </div>
+                            </div>
+                            <hr style="border-top: dotted 2px;" />
+                        </div>
+                        <div class="recibo24">
+                            <div class="container-fluid text-black">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <small id="Produto"></small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small id="Qant"></small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small id="Preço/Un"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small><Strong>Total sem IVA: </Strong><Strong id="totalsemIva23"></Strong></small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small><Strong>Total do IVA: </Strong><Strong id="totalIva23"></Strong></small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small><Strong>Total do Desc: </Strong><Strong id="totalDesc23"></Strong></small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small><Strong>Total: </Strong><Strong id="total23"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                <div class="col-md text-center">
+                    <small>Processado Por: <Strong>Systems Manager Lda.</Strong></small>
+                </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" id="fecharRecibo" class="btn btn-primary" data-dismiss="modal">PDF</button>
+                    <button type="button" id="fecharRecibo2" class="btn btn-primary" data-dismiss="modal">Imprimir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Model -->
+    <div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Cotação</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="recibo23Cot modal-body">
+                    <div class="p-1 mb-2 mt-2 bg-white text-black">
+                        <div class="text-center">
+                            <h6><Strong id="nomeEpresa243a"></Strong></h6>
+                        </div>
+                        <div class="text-center">
+                            <h6>Avenida: <Strong id="avenidaLocalizacao243a"></Strong></h6>
+                        </div>
+                        <div class="text-center">
+                            <h6>Banco NIB: <Strong id="bancoNIB243a"></Strong></h6>
+                        </div>
+                        <div class="text-center">
+                            <h6>NUIT: <Strong id="empresaNUIT243a"></Strong></h6>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-left">
+                                <Strong>Data: </Strong><Strong id="data23a"></Strong>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-left">
+                                <Strong>Operador: </Strong><Strong id="operador23ea"></Strong>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-left">
+                                <Strong>Cliente: </Strong><Strong id="nomeClienteCot"></Strong>
+                            </div>
+                        </div>
+                        <div class="container-fluid text-black">
+                            <hr style="border-top: dotted 1px;" />
+                            <div class="row">
+                                <div class="col-md">
+                                    <Strong><small>Cod</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                   <Strong><small>Prod</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Qant</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Preço</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Unid</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Desc%</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Total</small></Strong>
+                                </div>
+                            </div>
+                            <hr style="border-top: dotted 2px;" />
+                        </div>
+                        <div class="recibo241">
+                            <div class="container-fluid text-black">
+                                <div class="row">
+                                   <div class="col-md">
+                                        <small id="Produto"></small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small id="Qant"></small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small id="Preço/Un"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total sem IVA: </Strong><Strong id="totalsemIva23a"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total do IVA: </Strong><Strong id="totalIva23a"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total do Desc: </Strong><Strong id="totalDesc23a"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total: </Strong><Strong id="total23a"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md text-center">
+                            <small>Processado Por: <Strong>Systems Manager Lda.</Strong></small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="fecharCotacao" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Model Vat-->
+    <div class="modal fade" id="exampleModalCenter51" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle1">Cotação</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="recibo23Cota modal-body">
+                    <div class="bg-white text-black">
+                        <div>
+                            <div class="container2">
+                                <div class="text-left">
+                                    <div class="text">
+                                        <div>
+                                            <div><Strong><small>Masstores (Pty) Ltd T/A MAKRO SA</small></Strong></div>
+                                            <div><Strong><small>12 Arbour Road,Umbogintwini,Amanzimtoti,</small></Strong></div>
+                                            <div><Strong><small>Company Reg No: 1991/006805/07</small></Strong></div>
+                                            <div><Strong><small>VAT Reg No: 4300119155</small></Strong></div>
+                                        </div>
+                                        <div>
+                                            <div><Strong><small>NLA Reg No: RG0000488</small></Strong></div>
+                                            <div><Strong><small>Registered Status: Distributor</small></Strong></div>
+                                            <div><Strong><small>Liquor Store Lic: KZNLA/ETH/02/281</small></Strong></div>
+                                            <div><Strong><small>Grocers Wine Lic: KZNLA/ETH/02/281</small></Strong></div> 
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="imageProvisorio">
+                                        <img class="img2" src="provisorio.PNG">
+                                        <div class="text">
+                                            <div class="container2">
+                                                <div class="text-left">
+                                                    <div><Strong><small>Reprint Date:</small></Strong></div>
+                                                    <div><Strong><small>Reprint Time:</small></Strong></div>
+                                                    <div><Strong><small>Reprint Store:</small></Strong></div>
+                                                    <div><Strong><small>Page:</small></Strong></div> 
+                                                </div>
+                                                <div class="text-right">
+                                                    <div><Strong><small>Sat 06/11/2021</small></Strong></div>
+                                                    <div><Strong><small>15:21</small></Strong></div>
+                                                    <div><Strong><small>M25 Makro Amanzimtoti</small></Strong></div>
+                                                    <div><Strong><small>1 of 1</small></Strong></div> 
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>                          
+                        </div>
+                        <div class="text-center copy">
+                            <h5>COPY TAX INVOICE</h5>
+                        </div>  
+                        <div>
+                            <div class="container2">
+                                <div class="text-left">
+                                    <div class="text">
+                                        <div>
+                                            <div><Strong><small>04638344</small></Strong></div>
+                                            <div><Strong><small>MRS V NKOSI</small></Strong></div>
+                                            <br>
+                                            <br>
+                                            <div><Strong><small>VAT Reg No: NOT APPLICABLE</small></Strong></div>
+                                            <div><Strong><small>ZA</small></Strong></div>
+                                            <br>
+                                            <div><Strong><small>0</small></Strong></div>
+                                        </div>                                 
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="imageProvisorio">
+                                        <div class="text">
+                                            <div class="container2">
+                                                <div class="text-left">
+                                                    <div><Strong><small>POS No:</small></Strong></div>
+                                                    <div><Strong><small>Invoice No:</small></Strong></div>
+                                                    <div><Strong><small>Sales Date:</small></Strong></div>
+                                                    <div><Strong><small>Sales Str:</small></Strong></div>
+                                                    <div><Strong><small>Cashier ID:</small></Strong></div>
+                                                    <div><Strong><small>Unique Ref:</small></Strong></div>
+                                                    <div><Strong><small>Cust. Ref:</small></Strong></div>
+                                                    <div><Strong><small>Order ID:</small></Strong></div>
+                                                    <div><Strong><small>Orig Inv Rf:</small></Strong></div> 
+                                                </div>
+                                                <div class="text-right">
+                                                    <div><Strong><small>150</small></Strong></div>
+                                                    <div><Strong><small>13</small></Strong></div>
+                                                    <div><Strong><small>Sat 06/11/2021</small></Strong></div>
+                                                    <div><Strong><small>MAKRO ONLINE</small></Strong></div>
+                                                    <div><Strong><small>99999</small></Strong></div>
+                                                    <div><Strong><small>15001302506112021</small></Strong></div>
+                                                    <div><Strong><small>MAK3263032</small></Strong></div>
+                                                    <div><Strong><small>MAK3263032/0187585995</small></Strong></div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>                          
+                        </div>                   
+                        <div class="text-black">
+                            <div class="row text-center copy">
+                                <div class="col-md">
+                                    <Strong><small>Cod</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                   <Strong><small>Prod</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Qant</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Preço</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Unid</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Desc%</small></Strong>
+                                </div>
+                                <div class="col-md">
+                                    <Strong><small>Total</small></Strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recibo241a">
+                                <div class="row text-center">
+                                   <div class="col-md">
+                                        <small id="Produto"></small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small id="Qant"></small>
+                                    </div>
+                                    <div class="col-md">
+                                        <small id="Preço/Un"></small>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total: </Strong><Strong id="totalsemIva23aa"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total VAT: </Strong><Strong id="totalIva23aa"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total do Desc: </Strong><Strong id="totalDesc23aa"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="text-right">
+                                <small>
+                                    <Strong>Total: </Strong><Strong id="total23aa"></Strong>
+                                </small>
+                                
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="text-left copy2">
+                            <h6>VAT SUMMARY</h6>
+                        </div> 
+                        <div>
+                            <div class="container2">
+                                <div class="text-left">
+                                    <div class="text">
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <Strong><small>Vat Code</small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                               <Strong><small>Vat %</small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                                <Strong><small>Goods Amount</small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                                <Strong><small>Vat Amount</small></Strong>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <Strong><small>2</small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                               <Strong><small>15.00</small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                                <Strong><small id="totalProvisorio"></small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                                <Strong><small id="ivaTotalProvisorio"></small></Strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="imageProvisorio">
+                                        <!-- <img class="img2" src="provisorio.PNG">
+                                        <div class="text">
+                                            <div class="container2">
+                                                <div class="text-left">
+                                                    <div><Strong><small>Reprint Date:</small></Strong></div>
+                                                    <div><Strong><small>Reprint Time:</small></Strong></div>
+                                                    <div><Strong><small>Reprint Store:</small></Strong></div>
+                                                    <div><Strong><small>Page:</small></Strong></div> 
+                                                </div>
+                                                <div class="text-right">
+                                                    <div><Strong><small>Sat 06/11/2021</small></Strong></div>
+                                                    <div><Strong><small>15:21</small></Strong></div>
+                                                    <div><Strong><small>M25 Makro Amanzimtoti</small></Strong></div>
+                                                    <div><Strong><small>1 of 1</small></Strong></div> 
+                                                </div>
+                                            </div>
+                                            
+                                        </div> -->
+                                    </div>
+                                </div>
+                                
+                            </div>                          
+                        </div>
+                        <br>
+                        <div class="text-left copy2">
+                            <h6>PAYMENT SUMMARY</h6>
+                        </div>
+                        <div>
+                            <div class="container2">
+                                <div class="text-left">
+                                    <div class="text">
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <Strong><small>ONLINE CARD</small></Strong>
+                                            </div>
+                                            <div class="col-md">
+                                               <Strong><small>522</small></Strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="imageProvisorio">
+                                        <!-- <img class="img2" src="provisorio.PNG"> -->
+                                        <div class="text">
+                                            <div class="container2">
+                                                <div class="text-left">
+                                                    <!-- <div><Strong><small>Reprint Date:</small></Strong></div>
+                                                    <div><Strong><small>Reprint Time:</small></Strong></div>
+                                                    <div><Strong><small>Reprint Store:</small></Strong></div>
+                                                    <div><Strong><small>Page:</small></Strong></div>  -->
+                                                </div>
+                                                <div class="text-right">
+                                                    <div><Strong><small id="totalComIvaProvisorio"></small></Strong></div>
+                                                    <!-- <div><Strong><small>15:21</small></Strong></div>
+                                                    <div><Strong><small>M25 Makro Amanzimtoti</small></Strong></div>
+                                                    <div><Strong><small>1 of 1</small></Strong></div>  -->
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>                          
+                        </div>
+                        <div class="col-md text-center">
+                            <small>Processado Por: <Strong>Systems Manager Lda.</Strong></small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="fecharCotacao1" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Systems Manager 2022</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="jjj.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <!-- <script src="js/sb-admin-2.min.js"></script> -->
+   
+    <script src="js/renderer.js"></script>
+    <script src="js/caixa.js"></script>
+    <script src="../src/html2pdf.js-master/dist/html2pdf.bundle.min.js"></script>
+   
+    <!-- Custom scripts for all pages-->
+    <!-- <script src="../src/js/sb-admin-2.min.js"></script> -->
+    <!-- <script src="./renderer.js"></script> -->
+
+</body>
+
+
+
+</html>

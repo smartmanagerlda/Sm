@@ -1,0 +1,4 @@
+.suggestions > div:hover {
+    background-color: blue;
+    color: white;
+}

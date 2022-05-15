@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+  <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+  <div class="sidenav">
+    <h3>  <strong id='status'></strong></h3>
+       
+    <div class="login-main-text">
+        
+       <h1>Stocks Manager<br> Registo</h1>
+       <br>
+       <p>Faça o Registo da sua Empresa para ter  a plataforma!</p>
+       <p>Caso a sua empresa já esteja Registada, o usuário pode fazer o Login clicando <a href="../index.html">aqui</a></p>
+       <p>Caso tenha esquecido as suas credenciais, por favor, entre em contacto com a Stocks Manager!</p>
+    </div>
+ </div>
+ <div class="main">
+ <div class="imagem-menu">
+   <img src="../images/Stocks2.png" alt="Stocks Manager"/>
+ </div>
+ <form class="row g-3" action="../Home/home.html" method="POST">
+   <div class="col-md-6">
+     <label for="inputEmail" class="form-label">Nome da Empresa</label>
+     <input type="text" class="form-control" id="inputEmail" required minlength="2">
+   </div>
+   <div class="col-md-6">
+     <label for="inputEmail4" class="form-label">Email</label>
+     <input type="email" class="form-control" id="inputEmail4" required minlength="2">
+   </div>
+   <div class="col-md-6">
+       <label for="inputPassword4" class="form-label">Senha</label>
+       <input type="password" class="form-control" id="inputPassword4" required minlength="5" maxlength="100">
+     </div>
+     <div class="col-md-6">
+       <label for="inputPassword42" class="form-label">Confirmar Senha</label>
+       <input type="password" class="form-control" id="inputPassword42" required minlength="5" maxlength="100">
+     </div>
+   <div class="col-12">
+     <label for="inputAddress" class="form-label">Endereço</label>
+     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required minlength="2"> 
+   </div>
+   <div class="col-12">
+     <label for="inputAddress2" class="form-label">Contacto</label>
+     <input type="tel" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" required minlength="2">
+   </div>
+   <div class="col-md-6">
+     <label for="inputCity" class="form-label">Distrito</label>
+     <input type="text" class="form-control" id="inputCity" required minlength="2">
+   </div>
+   <div class="col-md-4">
+     <label for="inputState" class="form-label">Provincia</label>
+     <select id="inputState" class="form-select">
+       <option selected>Maputo Cidade</option>
+       <option>Maputo Provincia</option>
+       <option>Inhambane</option>
+       <option>Gaza</option>
+       <option>Sofala</option>
+       <option>Manica</option>
+       <option>Tete</option>
+       <option>Zambézia</option>
+       <option>Nampula</option>
+       <option>Cabo Delgado</option>
+       <option>Niassa</option>
+     </select>
+   </div>
+   
+   <div class="col-12">
+     <div class="form-check">
+       <input class="form-check-input" type="checkbox" id="gridCheck" required>
+       <label class="form-check-label" for="gridCheck">
+         Concordo com os Termos e Política de Privacidade 
+       </label>
+     </div>
+   </div>
+   <div class="col-12">
+     <button type="submit" class="btn btn-primary" id="registro">Resgito</button>
+   </div>
+ </form>
+    
+ </div>
+
+</body>
+<script src="../js/renderer.js"></script>
+</html>

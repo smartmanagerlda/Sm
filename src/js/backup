@@ -1,0 +1,135 @@
+confirmarImpressora.addEventListener('click', (e) => {
+    // e.preventDefault();
+    let printerName;
+    let widthPage;
+
+    var p = document.getElementsByName("printer");
+    var w = document.getElementsByName("width");
+
+    for (var i = 0, length = p.length; i < length; i++) {
+        if (p[i].checked) {
+        printerName = p[i].value;
+
+        break;
+        }
+    }
+
+    for (var i = 0, length = w.length; i < length; i++) {
+        if (w[i].checked) {
+        widthPage = w[i].value;
+
+        break;
+        }
+    }
+    const dataImpressao = [
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+          value: "Systems Manager Lda.<br>Av Dom Alexandre<br>NUIT: 00000<br>Tel: 000000000",
+          style: `text-align:center;`,
+          css: { "font-weight": "100", "font-size": "14px", "margin": "0px", "padding": "0px"},
+        },
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+          value: "-------------------<br>-------------------",
+          style: `text-align:center;`,
+          css: { "font-size": "12px" },
+        },
+        { 
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
+          value:
+            "Venda a Dinheiro<br><br>No 00000<br><br>Data: 00/00/2022<br>Caixa: Coutinho<br>Cliente: Lucas<br>",
+      
+          css: {
+            "font-size": "10px",
+            "font-family": "sans-serif",
+            "text-align": "left",
+            "margin": "0px",
+            "padding": "0px"
+          },
+        },
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
+          value:
+            "-------------------<br>Produto----------Qt----------Total<br>",
+      
+          css: {
+            "font-size": "10px",
+            "font-family": "sans-serif",
+            "text-align": "center",
+            "margin": "0px",
+            "padding": "0px"
+          },
+        },
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+          value: "Total Items: 0.00 Mt",
+          css: {
+            "font-size": "10px",
+            "font-family": "sans-serif",
+            "text-align": "right",
+            "margin": "0px",
+            "padding": "0px"
+          },
+        },
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+          value: "Total IVA: 0.00 Mt",
+          css: {
+            "font-size": "10px",
+            "font-family": "sans-serif",
+            "text-align": "right",
+            "margin": "0px",
+            "padding": "0px"
+          },
+        },
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+          value: "Total Desc: 0.00 Mt",
+          css: {
+            "font-size": "10px",
+            "font-family": "sans-serif",
+            "text-align": "right",
+            "margin": "0px",
+            "padding": "0px"
+          },
+        },
+        {
+          type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+          value: "Total: 0.00 Mt",
+          css: {
+            "font-size": "10px",
+            "font-family": "sans-serif",
+            "text-align": "left",
+            "margin": "0px",
+            "padding": "0px"
+          },
+        },
+    ];
+
+    const options = {
+        preview: false, // Preview in window or print
+        width: `${widthPage}`, //  width of content body
+        margin: "0 0 0 0", // margin of content body
+        copies: 1, // Number of copies to print
+        printerName: `${printerName}`, // printerName: string, check it at webContent.getPrinters()
+        timeOutPerLine: 800,
+        silent: true,
+        // pageSize: { height: 301000, width: 71000 }
+      }
+
+    if (printerName && widthPage) {
+        PosPrinter.print(dataImpressao, options)
+          .then(() => {})
+          .catch((error) => {
+            console.log(error);
+            console.error(error);
+          });
+      } else {
+        alert("Select the printer and the width");
+      }
+
+    // ipcRenderer.send('widthPage', `${widthPage}`);
+    // ipcRenderer.send('printerName', `${printerName}`);
+    // ipcRenderer.send('print', JSON.stringify(dataImpressao));
+
+});
